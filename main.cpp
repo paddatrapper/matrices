@@ -10,19 +10,19 @@
 
 #include <stdlib.h>
 #include <iostream>
-#include "matrix.h"
+#include "libmatrix/matrix.h"
 
 /**
  * Main
  */
 int main(int argc, char *argv[])
 {
-	Matrix::matrix_t vector = {
+	libmatrix::Matrix::matrix_t vector = {
 		{1.0, 0.0, 0.0},
 		{0.0, 1.0, 0.0},
 		{0.0, 0.0, 1.0}
 	};
-	Matrix a(vector);
+	libmatrix::Matrix a(vector);
 	std::cout << (a + a + a + a);
 	return EXIT_SUCCESS;
 }

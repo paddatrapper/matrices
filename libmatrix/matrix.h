@@ -14,6 +14,8 @@
 /**
  *  A matrix
  */
+namespace libmatrix 
+{
 class Matrix
 {
 	public:
@@ -46,4 +48,4 @@ class Matrix
 		// ==================  DATA MEMBERS  =======================================
 		const matrix_t matrix;
 };
-
+}

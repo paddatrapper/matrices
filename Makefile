@@ -1,6 +1,6 @@
 CC = g++
 CXXFLAGS = -std=c++11 -I.
-DEPS = matrix.h
+DEPS = libmatrix/matrix.h
 EXECUTABLE = matrices
 BUILD_DIR = build
 
@@ -12,6 +12,10 @@ ${BUILD_DIR}/%.o: %.cpp ${DEPS}
 
 ${EXECUTABLE}: ${OBJS}
 	${CC} -o $@ $^ ${CXXFLAGS}
+
+${BUILD_DIR}/matrix.o: libmatrix/matrix.cpp ${DEPS}
+	${CC} -c -o $@ $< ${CXXFLAGS}
+
 
 .PHONY: clean
 

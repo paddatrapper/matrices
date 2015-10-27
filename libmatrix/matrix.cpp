@@ -9,7 +9,8 @@
  */
 
 #include "matrix.h"
-
+namespace libmatrix
+{
 Matrix::Matrix(Matrix::matrix_t matrix): matrix(matrix)
 {
 }
@@ -63,4 +64,5 @@ std::ostream& operator<<(std::ostream &os, const Matrix &obj)
 		os << " ";
 	os << "\u14A7\n";
 	return os;
+}
 }
