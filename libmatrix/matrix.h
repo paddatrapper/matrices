@@ -7,6 +7,8 @@
  *
  *         Author:  Kyle Robbertze (kr), paddatrapper@gmail.com
  */
+#ifndef MATRIX_H
+#define MATRIX_H
 
 #include <iostream>
 #include <vector>
@@ -49,3 +51,4 @@ class Matrix
 		const matrix_t matrix;
 };
 }
+#endif
