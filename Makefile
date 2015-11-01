@@ -1,21 +1,24 @@
 CC = g++
 CXXFLAGS = -std=c++11 -I.
-DEPS = libmatrix/matrix.h
 EXECUTABLE = matrices
+LIB_DIR = libmatrix
+SRC_DIR = libmatrix
 BUILD_DIR = build
 
 _OBJS = matrix.o main.o
 OBJS = $(patsubst %, ${BUILD_DIR}/%, ${_OBJS})
 
-${BUILD_DIR}/%.o: %.cpp ${DEPS}
-	${CC} -c -o $@ $< ${CXXFLAGS}
+_DEPS = matrix.h
+DEPS = $(patsubst %, ${LIB_DIR}/%, ${_DEPS})
 
 ${EXECUTABLE}: ${OBJS}
 	${CC} -o $@ $^ ${CXXFLAGS}
 
-${BUILD_DIR}/matrix.o: libmatrix/matrix.cpp ${DEPS}
+${BUILD_DIR}/%.o: ${SRC_DIR}/%.cpp ${DEPS}
 	${CC} -c -o $@ $< ${CXXFLAGS}
 
+${BUILD_DIR}/main.o: main.cpp ${DEPS}
+	${CC} -c -o $@ $< ${CXXFLAGS}
 
 .PHONY: clean
 
