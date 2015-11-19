@@ -50,23 +50,6 @@ Matrix operator+(const Matrix &a, const Matrix &b)
 
 std::ostream& operator<<(std::ostream &os, const Matrix &obj)
 {
-	/*
-	os << "\u14A5";
-	for (int i = 0; i < obj.getNumColumns(); i++)
-		os << " ";
-	os << "\u14A3\n";
-	for (auto &row : obj.matrix) {
-		os << "|";
-		for (auto &digit : row)
-			os << digit;
-		os << "|\n";
-	}
-	os << "\u14AA";
-	for (int i = 0; i < obj.getNumColumns(); i++)
-		os << " ";
-	os << "\u14A7\n";
-	*/
-
 	os << "\u23a1";
 	for (auto &digit : obj.matrix.at(0))
 		os << digit;
