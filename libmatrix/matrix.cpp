@@ -9,6 +9,7 @@
  */
 
 #include "matrix.h"
+
 namespace libmatrix
 {
 Matrix::Matrix(Matrix::matrix_t matrix): matrix(matrix)
@@ -49,6 +50,7 @@ Matrix operator+(const Matrix &a, const Matrix &b)
 
 std::ostream& operator<<(std::ostream &os, const Matrix &obj)
 {
+	/*
 	os << "\u14A5";
 	for (int i = 0; i < obj.getNumColumns(); i++)
 		os << " ";
@@ -63,6 +65,25 @@ std::ostream& operator<<(std::ostream &os, const Matrix &obj)
 	for (int i = 0; i < obj.getNumColumns(); i++)
 		os << " ";
 	os << "\u14A7\n";
+	*/
+
+	os << "\u23a1";
+	for (auto &digit : obj.matrix.at(0))
+		os << digit;
+	os << "\u23a4\n";
+	for (int i = 1; i < obj.matrix.size() - 1; i++) {
+		auto &row = obj.matrix.at(i);
+		os << "\u23a2";
+		for (auto &digit : row)
+			os << digit;
+		os << "\u23a5\n";
+	}
+
+	os << "\u23a3";
+	for (auto &digit : obj.matrix.at(obj.matrix.size() - 1))
+		os << digit;
+	os << "\u23a6\n";
+
 	return os;
 }
 }
