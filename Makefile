@@ -20,6 +20,9 @@ ${BUILD_DIR}/%.o: ${SRC_DIR}/%.cpp ${DEPS}
 ${BUILD_DIR}/main.o: main.cpp ${DEPS}
 	${CC} -c -o $@ $< ${CXXFLAGS}
 
+run: ${EXECUTABLE}
+	./${EXECUTABLE}
+
 .PHONY: clean
 
 clean:
