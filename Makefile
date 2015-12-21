@@ -1,7 +1,6 @@
 CC = g++
 CXXFLAGS = -std=c++11 -I.
 EXECUTABLE = matrices
-LIB_DIR = libmatrix
 SRC_DIR = libmatrix
 BUILD_DIR = build
 
@@ -9,16 +8,23 @@ _OBJS = matrix.o main.o
 OBJS = $(patsubst %, ${BUILD_DIR}/%, ${_OBJS})
 
 _DEPS = matrix.h
-DEPS = $(patsubst %, ${LIB_DIR}/%, ${_DEPS})
+DEPS = $(patsubst %, ${SRC_DIR}/%, ${_DEPS})
+
+.PHONY: all
+
+all: run
 
 ${EXECUTABLE}: ${OBJS}
 	${CC} -o $@ $^ ${CXXFLAGS}
 
-${BUILD_DIR}/%.o: ${SRC_DIR}/%.cpp ${DEPS}
+${BUILD_DIR}/%.o: ${SRC_DIR}/%.cpp ${DEPS} ${BUILD_DIR}
 	${CC} -c -o $@ $< ${CXXFLAGS}
 
-${BUILD_DIR}/main.o: main.cpp ${DEPS}
+${BUILD_DIR}/main.o: main.cpp ${DEPS} ${BUILD_DIR}
 	${CC} -c -o $@ $< ${CXXFLAGS}
+
+${BUILD_DIR}:
+	mkdir ${BUILD_DIR}
 
 run: ${EXECUTABLE}
 	./${EXECUTABLE}
@@ -26,4 +32,4 @@ run: ${EXECUTABLE}
 .PHONY: clean
 
 clean:
-	-rm ${BUILD_DIR}/* ${EXECUTABLE}
+	-rm -r ${BUILD_DIR} ${EXECUTABLE}
