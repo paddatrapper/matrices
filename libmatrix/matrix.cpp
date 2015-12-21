@@ -48,6 +48,19 @@ Matrix operator+(const Matrix &a, const Matrix &b)
 	return Matrix(vector);
 }
 
+Matrix operator-(const Matrix &a, const Matrix &b)
+{
+	Matrix::matrix_t vector = a.getMatrix();
+	for(int i = 0; i < a.getNumRows(); i++)
+		for (int j = 0; j < a.getNumColumns(); j++) {
+			double value = a.get(i, j) - b.get(i, j);
+			auto &row = vector.at(i);
+			row.at(j) = value;
+		}
+	return Matrix(vector);
+		
+}
+
 std::ostream& operator<<(std::ostream &os, const Matrix &obj)
 {
 	os << "\u23a1";
