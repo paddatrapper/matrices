@@ -58,7 +58,18 @@ Matrix operator-(const Matrix &a, const Matrix &b)
 			row.at(j) = value;
 		}
 	return Matrix(vector);
-		
+}
+
+Matrix operator*(const int &n, const Matrix &a)
+{
+	Matrix::matrix_t vector = a.getMatrix();
+	for(int i = 0; i < a.getNumRows(); i++)
+		for (int j = 0; j < a.getNumColumns(); j++) {
+			double value = a.get(i, j) * n;
+			auto &row = vector.at(i);
+			row.at(j) = value;
+		}
+	return Matrix(vector);
 }
 
 std::ostream& operator<<(std::ostream &os, const Matrix &obj)
