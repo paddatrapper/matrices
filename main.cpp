@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 		{0.0, 0.0, 1.0}
 	};
 	libmatrix::Matrix a(vector);
-	std::cout << (a + a + a + a);
+	std::cout << (a + a + a - a);
 	return EXIT_SUCCESS;
 }
 
