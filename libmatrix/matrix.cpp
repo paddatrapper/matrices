@@ -72,6 +72,26 @@ Matrix operator*(const int &n, const Matrix &a)
 	return Matrix(vector);
 }
 
+Matrix operator*(const Matrix &a, const Matrix &b)
+{
+	Matrix::matrix_t aVector = a.getMatrix();
+	Matrix::matrix_t bVector = b.getMatrix();
+	Matrix::matrix_t resultVector;
+
+	for (int i = 0; i < a.getNumRows(); i++) {
+		auto row = aVector.at(0);
+		resultVector.push_back(bVector.at(0));
+		for (int j = 0; j < a.getNumColumns(); j++) {
+			double sum = 0;
+			for (int k = 0; k < b.getNumRows(); k++) {
+				sum += aVector.at(i).at(k) * bVector.at(k).at(j);
+				resultVector.at(i).at(j) = sum;
+			}
+		}
+	}
+	return Matrix(resultVector);
+}
+
 std::ostream& operator<<(std::ostream &os, const Matrix &obj)
 {
 	os << "\u23a1";
@@ -89,7 +109,7 @@ std::ostream& operator<<(std::ostream &os, const Matrix &obj)
 	os << "\u23a3";
 	for (auto &digit : obj.matrix.at(obj.matrix.size() - 1))
 		os << digit << "\t";
-	os << "\u23a6\n";
+	os << "\u23a6";
 
 	return os;
 }

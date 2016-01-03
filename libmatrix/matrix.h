@@ -36,8 +36,8 @@ class Matrix
 		// ==================  OPERATORS     =======================================
 		friend Matrix operator+(const Matrix &a, const Matrix &b);
 		friend Matrix operator-(const Matrix &a, const Matrix &b);
-//		Matrix operator*(const Matrix &a, const Matrix &b);
 		friend Matrix operator*(const int &n, const Matrix &a);
+		friend Matrix operator*(const Matrix &a, const Matrix &b);
 		friend std::ostream& operator<<(std::ostream &os, const Matrix &obj);
 	protected:
 		// ==================  METHODS       =======================================
